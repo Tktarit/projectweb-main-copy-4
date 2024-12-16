@@ -1,0 +1,204 @@
+
+
+.booking-container {
+    width: 100%;
+    padding: 15px 20px;
+    background: linear-gradient(to right, #007bff, #00c6ff);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    z-index: 1000;
+    overflow-y: auto; /* อนุญาตให้เลื่อนในแนวตั้ง */
+    position: relative; /* ใช้ relative แทน fixed หรือ absolute */
+  }
+  
+  .booking-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    color: white;
+    width: 100%;
+    max-width: 1200px;
+  }
+  
+  .form-groupp {
+    display: flex;
+    flex-direction: column;
+    margin: 0;
+    width: 150px;
+  }
+  
+  .form-groupp label {
+    font-size: 12px;
+    margin-bottom: 5px;
+    color: white;
+  }
+  
+  .form-groupp input,
+  .form-groupp select {
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 4px;
+    background-color: rgba(255, 255, 255, 0.2);
+    color: white;
+    transition: background-color 0.3s, border-color 0.3s;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  .form-groupp input:focus,
+  .form-groupp select:focus {
+    border-color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    outline: none;
+  }
+  
+  .booking-header {
+    margin: 20px;
+    font-size: 36px;
+    font-weight: bold;
+    color: white;
+  }
+  
+  .booking-button {
+    padding: 8px 12px;
+    background-color: white;
+    color: #007bff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.3s, color 0.3s;
+    width: 150px; /* Matches input width */
+    height: 40px; /* Matches input height */
+    box-sizing: border-box;
+  }
+  
+  .booking-button:hover {
+    background-color: #007bff;
+    color: white;
+  }
+  
+  .booking-button:focus {
+    outline: none;
+  }
+  
+  .room-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+    padding: 20px;
+  }
+  
+  .room-block {
+    display: flex;
+    flex-direction: column;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    background: #fff;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  
+  .room-block:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  }
+  
+  .room-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+  }
+  
+  .room-details {
+    padding: 15px;
+  }
+  
+  .room-title {
+    font-size: 18px;
+    font-weight: bold;
+    margin: 10px 0;
+  }
+  
+  .room-capacity {
+    font-size: 14px;
+    color: #555;
+    margin-bottom: 10px;
+  }
+  
+  .room-description {
+    font-size: 14px;
+    color: #777;
+    margin-bottom: 15px;
+  }
+  
+  .room-price {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .room-price span {
+    font-size: 16px;
+    font-weight: bold;
+    color: #000;
+  }
+  
+  .book-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: background-color 0.2s;
+  }
+  
+  .book-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .booking-form {
+    display: flex; /* ใช้ Flexbox */
+    flex-wrap: wrap; /* รองรับการย่อหน้าจอ */
+    align-items: center; /* จัดแนวให้ตรงกันในแนวนอน */
+    gap: 10px; /* ระยะห่างระหว่าง Dropdown และปุ่ม */
+  }
+  
+  .booking-form select {
+    flex: 1; /* ให้ Dropdown ขยายได้ตามพื้นที่ */
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    font-size: 14px;
+  }
+  
+  .booking-button {
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+  }
+  
+  .booking-button:hover {
+    background-color: #0056b3;
+  }
+  
+  .booking-form {
+    flex-wrap: wrap; /* ทำให้องค์ประกอบเลื่อนลงด้านล่างเมื่อหน้าจอแคบ */
+  }
+  
+  .booking-form select,
+  .booking-button {
+    flex: 1 1 100%; /* ให้แต่ละองค์ประกอบใช้ความกว้างเต็มหน้าจอเมื่อแคบ */
+    margin-top: 10px; /* ระยะห่างระหว่างบรรทัด */
+  }
+  

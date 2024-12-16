@@ -1,0 +1,195 @@
+.LonIn {
+    position: absolute;
+    top: 20px; /* ปรับระยะห่างจากขอบบน */
+    right: 20px; /* ปรับระยะห่างจากขอบขวา */
+    width: 133px;
+    height: 48px;
+    background-color: white; /* สีพื้นหลังของปุ่ม */
+    color: black; /* สีข้อความ */
+    border: none; /* ไม่มีเส้นขอบ */
+    border-radius: 5px; /* มุมมน */
+    font-size: 16px; /* ขนาดตัวอักษร */
+    cursor: pointer; /* เปลี่ยนเป็นรูปมือเมื่อเลื่อนเมาส์มาเหนือปุ่ม */
+    
+  }
+  
+  .LonIn:hover {
+    background-color: #e7e7e7; /* เปลี่ยนสีเมื่อเอาเมาส์ชี้ */
+  }
+
+  #menuButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    border: none;
+    cursor: pointer;
+    display: flex;                 /* จัดเรียงเนื้อหาในปุ่มให้เป็นแนวนอน */
+    align-items: center;           /* จัดให้อยู่ตรงกลางในแนวตั้ง */
+    gap: 10px;                     /* เพิ่มช่องว่างระหว่างไอคอนและข้อความ */
+    padding: 0;
+    color: #ffffff;
+    font-size: 24px;
+    text-decoration: none;
+}
+
+.icon {
+    display: flex;
+    flex-direction: column;        /* จัดเรียงเส้นไอคอนในแนวตั้ง */
+    justify-content: space-around; /* จัดช่องว่างระหว่างเส้น */
+    width: 30px;                   /* กำหนดความกว้างของไอคอน */
+    height: 20px;                  /* กำหนดความสูงของไอคอน */
+}
+.bar {
+    width: 100%;
+    height: 3px;                   /* ความหนาของเส้น */
+    background-color: #ffffff;     /* สีของเส้น */
+    border-radius: 2px; /* มุมมน */
+}
+.menuText {
+    color: #ffffff;                /* สีข้อความ */
+}
+
+#menuButtonbar {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: none;       /* เอาพื้นหลังออก */
+  border: none;           /* เอาเส้นขอบออก */
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  width: 30px;            /* ความกว้างของไอคอน */
+  height: 30px;           /* ความสูงของไอคอน */
+  padding: 0;
+}
+
+#menu {
+    position: fixed;
+    bottom: -100vh;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: #333;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    transition: bottom 0.3s ease;
+    z-index: 1000;          /* ทำให้เมนูอยู่ชั้นบนสุด */
+}
+
+#menu ul {
+    list-style: none;
+    padding: 0;
+    text-align: center;
+}
+
+#menu ul li {
+    margin: 15px 0;
+}
+
+#menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-size: 20px;
+}
+
+#closeButton {
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    background: none;
+    color: white;
+    font-size: 30px;
+    border: none;
+    cursor: pointer;
+}
+
+#menu.active {
+    bottom: 0;
+}
+
+.container {
+  display: flex;                 /* ใช้ Flexbox สำหรับจัดเรียง */
+  justify-content: space-between; /* จัดปุ่มด้านซ้ายและขวา */
+  /* align-items: center;           จัดตำแหน่งในแนวตั้ง */
+  width: 100%;                  /* ให้ครอบคลุมทั้งความกว้าง */
+  padding: 0 20px;              /* เพิ่มระยะห่างซ้ายขวา */
+}
+
+.centered-text {
+  flex-grow: 1;                 /* ให้พื้นที่นี้เติบโตเต็มที่เพื่ออยู่กลาง */
+  text-align: center;           /* จัดตำแหน่งข้อความให้อยู่กลาง */
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-right: 60px;
+}
+
+.centered-text h1 {
+  color: #ffffff;               /* สีของข้อความ */
+  font-size: 32px;              /* ขนาดฟอนต์ */
+  margin: 0;                    /* เอาค่ามาร์จินออก */
+}
+
+.centered-text p {
+  color: #ffffff;               /* สีของข้อความ */
+  font-size: 16px;              /* ขนาดฟอนต์ */
+  margin: 5px;                    /* เอาค่ามาร์จินออก */
+}
+
+.logo1 {
+  height: 50px;                /* กำหนดความสูงของโลโก้ */
+  width: 50px;
+}
+
+.logo2 {
+  height: 250px;                /* กำหนดความสูงของโลโก้ */
+  width: 250px;
+}
+
+
+
+.centereds{
+  display: flex;                  /* ใช้ Flexbox */
+  flex-direction: column;
+  justify-content: center;        /* จัดตำแหน่งแนวนอนให้อยู่กลาง */
+  align-items: center;            /* จัดตำแหน่งแนวตั้งให้อยู่กลาง */
+  height: 100vh;                 /* ให้มีความสูงเต็มหน้าจอ */
+  position: relative;             /* เพื่อให้อยู่ในตำแหน่งที่เหมาะสม */
+  width: 100%;
+  flex-direction: column;
+  font-size: 42px;
+  color: white;
+  text-align: center;
+}
+
+.block2-text {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center; /* จัดให้ข้อความอยู่ตรงกลางแนวนอน */
+  font-size: 24px;
+  text-align: center;
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+.block2-text1 {
+  position: absolute;
+  top: 100px;
+
+}
+.block2-text2 {
+  position: absolute;
+  bottom: 250px;
+}
+.block2-text3 {
+  position: absolute;
+  bottom: 50px;
+
+}
