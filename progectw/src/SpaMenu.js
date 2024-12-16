@@ -1,33 +1,14 @@
 import React from 'react';
-import HeroSection from './HeroSection';
 import LeftPicNoButton  from './LeftPicNoButton';
 import Footer   from './Footer';
-import RightPicWithButton from './RightPicWithButton';
 import TREATMENTSMENU from './TREATMENTSMENU';
 import FeaturedTreatment from './FeaturedTreatment';
 const SpaMenu = () => {
-    const buttons = [
-        { text: 'Book Now', path: '/Booknow' },
-        
-    ];
+    
     
     return (
         <div>
-               <HeroSection
-        title="ASTRAEA"
-        subtitle="A WELLNESS SPA"
-        mainText="A POWERFUL"
-        mainText2="WAY TO MEDITATE"
-        description="The benefits of meditation are well-known—it can reduce stress and anxiety, improve memory and mood, lower blood pressure, even strengthen the immune system. Astraea’s Meditation Loungers allow you to take your meditation experience to an even deeper level by reducing distractions and easing you into your meditative state with vibroacoustics. This immersive experience is designed to help you quickly and completely enter a state of total calm. "
-      />
-       <RightPicWithButton
-            
-            description="At Astraea, we believe in inclusivity and welcome everyone just as they are. Our menu offers experiences that have been carefully curated with you in mind. From seaweed wraps, massages and Neo-Lifting facial massages to our meditation loungers and infrared saunas, our mission is to provide memorable experiences for our guests with long-lasting effects."
-            description2="At Astraea, our treatments will aid in calming your senses, releasing chronic tension, hydrating your skin & body, boosting energy, and much more. We believe ageing should be celebrated with self-care and total body wellness, and we want each one of our guests to leave feeling renewed, confident, and beautiful in their own skin."
-            description3="Want to share the experience with a partner? All treatments at Astraea are available for couples."
-            imgSrc="/image/bgmain.jpg"
-            buttons={buttons}
-        />
+              
         <TREATMENTSMENU
          menuTitle="SPA MENU"
          subtitle="All treatments at Astraea are available for couples. Simply reserve two massages or treatments at the same time and write us a note in your reservation that you would like to have it be a couples' experience. We'll take care of the rest!" />

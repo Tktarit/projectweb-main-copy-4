@@ -1,4 +1,4 @@
-import { width } from '@fortawesome/free-brands-svg-icons/fa42Group';
+
 import React from 'react';
 
 const TREATMENTSMENU = ({

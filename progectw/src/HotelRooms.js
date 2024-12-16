@@ -44,7 +44,7 @@ const HotelRooms = ({ title, subtitle, rooms }) => {
     },
     image: {
       width: '100%',
-      height: '200px',
+      height: '300px',
       objectFit: 'cover',
       borderRadius: '8px',
     },

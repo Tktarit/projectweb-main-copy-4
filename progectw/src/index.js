@@ -1,7 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
-import { BrowserRouter } from "react-router-dom";
-import { AppProvider } from './AppContext';
+// import { BrowserRouter } from "react-router-dom";
+// import { AppProvider } from './AppContext';
 import './index.css';
 import App from './Main/App';
 

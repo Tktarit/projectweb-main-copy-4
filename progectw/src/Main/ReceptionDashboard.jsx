@@ -26,7 +26,15 @@ const ReceptionDashboard = () => {
       const bookingsResponse = await fetch('http://localhost:3000/api/bookings');
       const roomsData = await roomsResponse.json();
       const bookingsData = await bookingsResponse.json();
-      setRooms(roomsData);
+  
+      // Ensure unique room entries by room number
+      const uniqueRooms = Array.from(
+        new Set(roomsData.map((room) => room.room_number))
+      ).map((room_number) => 
+        roomsData.find((room) => room.room_number === room_number)
+      );
+  
+      setRooms(uniqueRooms);
       setBookings(bookingsData);
       setLoading(false);
     } catch (error) {
@@ -34,6 +42,7 @@ const ReceptionDashboard = () => {
       setLoading(false);
     }
   };
+  
 
   const todayDate = new Date().toISOString().split('T')[0]; // วันที่ปัจจุบันในรูปแบบ YYYY-MM-DD
 
@@ -162,110 +171,79 @@ const ReceptionDashboard = () => {
           ))}
         </div>
       </div>
-
-  {/* ฟิลเตอร์ค้นหา */}
+  {/* ฟิลเตอร์ค้นหาและตารางแสดงห้องพัก */}
   <div className="section mt-8">
-        <h2>ค้นหาห้องพัก</h2>
-        <div className="flex mb-4">
-          <input 
-            type="text" 
-            value={searchQuery} 
-            onChange={(e) => setSearchQuery(e.target.value)} 
-            placeholder="ค้นหาโดย หมายเลขห้อง" 
-            className="p-2 mr-2 w-full rounded bg-gray-700 text-white" 
-          />
+    <h2>ค้นหาห้องพัก</h2>
+    <div className="flex mb-4">
+      {/* ช่องค้นหาหมายเลขห้อง */}
+      <input 
+        type="text" 
+        value={searchQuery} 
+        onChange={(e) => setSearchQuery(e.target.value)} 
+        placeholder="ค้นหาโดย หมายเลขห้อง" 
+        className="p-2 mr-2 w-full rounded bg-gray-700 text-white" 
+      />
 
-          <select 
-            value={selectedRoomType} 
-            onChange={(e) => setSelectedRoomType(e.target.value)} 
-            className="p-2 w-full rounded bg-gray-700 text-white"
-          >
-            <option value="">เลือกประเภทห้อง</option>
-            {roomTypes.map((type) => (
-              <option key={type} value={type}>
-                {type}
-              </option>
-            ))}
-          </select>
-        </div>
+      {/* ตัวเลือกประเภทห้อง */}
+      <select 
+        value={selectedRoomType} 
+        onChange={(e) => setSelectedRoomType(e.target.value)} 
+        className="p-2 w-full rounded bg-gray-700 text-white"
+      >
+        <option value="">เลือกประเภทห้อง</option>
+        {roomTypes.map((type) => (
+          <option key={type} value={type}>
+            {type}
+          </option>
+        ))}
+      </select>
+    </div>
 
-        <table className="status-table">
-          <thead>
-            <tr>
-              <th>หมายเลขห้อง</th>
-              <th>ประเภท</th>
-              <th>ราคา/คืน</th>
-              <th>ความจุ</th>
-              <th>สถานะ</th>
-              <th>การกระทำ</th>
+    {/* ตารางห้องพักที่ผ่านฟิลเตอร์ */}
+    <table className="status-table">
+      <thead>
+        <tr>
+          <th>หมายเลขห้อง</th>
+          <th>ประเภท</th>
+          <th>ราคา/คืน</th>
+          <th>ความจุ</th>
+          <th>สถานะ</th>
+          <th>การกระทำ</th>
+        </tr>
+      </thead>
+      <tbody>
+        {filteredRooms.length > 0 ? (
+          filteredRooms.map((room) => (
+            <tr key={room.room_number}>
+              <td>{room.room_number}</td>
+              <td>{room.type}</td>
+              <td>{room.price_per_night} THB</td>
+              <td>{room.capacity}</td>
+              <td className={room.is_available ? 'available' : 'occupied'}>
+                {room.is_available ? 'Available' : 'Occupied'}
+              </td>
+              <td>
+                {!room.is_available && (
+                  <button 
+                    className="bg-blue-500 text-white px-4 py-2 rounded" 
+                    onClick={() => handleCheckOut(room.room_number)}
+                  >
+                    Check-Out
+                  </button>
+                )}
+              </td>
             </tr>
-          </thead>
-          <tbody>
-            {filteredRooms.map((room) => (
-              <tr key={room.room_number}>
-                <td>{room.room_number}</td>
-                <td>{room.type}</td>
-                <td>{room.price_per_night} THB</td>
-                <td>{room.capacity}</td>
-                <td className={room.is_available ? 'available' : 'occupied'}>
-                  {room.is_available ? 'Available' : 'Occupied'}
-                </td>
-                <td>
-                  {!room.is_available && (
-                    <button 
-                      className="bg-blue-500 text-white px-4 py-2 rounded" 
-                      onClick={() => handleCheckOut(room.room_number)}
-                    >
-                      Check-Out
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+          ))
+        ) : (
+          <tr>
+            <td colSpan="6" className="text-center">ไม่พบห้องพักที่ตรงกับเงื่อนไข</td>
+          </tr>
+        )}
+      </tbody>
+    </table>
+  </div>
 
-
-      {/* ตารางแสดงห้องพัก */}
-      <div className="section mt-8">
-        <h2>Room List</h2>
-        <table className="status-table">
-          <thead>
-            <tr>
-              <th>Room Number</th>
-              <th>Type</th>
-              <th>Price/Night</th>
-              <th>Capacity</th>
-              <th>Status</th>
-              <th>Actions</th>
-            </tr>
-          </thead>
-          <tbody>
-            {rooms.map((room) => (
-              <tr key={room.room_number}>
-                <td>{room.room_number}</td>
-                <td>{room.type}</td>
-                <td>{room.price_per_night} THB</td>
-                <td>{room.capacity}</td>
-                <td className={room.is_available ? 'available' : 'occupied'}>
-                  {room.is_available ? 'Available' : 'Occupied'}
-                </td>
-                <td>
-                  {!room.is_available && (
-                    <button
-                      className="bg-blue-500 text-white px-4 py-2 rounded"
-                      onClick={() => handleCheckOut(room.room_number)}
-                    >
-                      Check-Out
-                    </button>
-                  )}
-                </td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+ 
 
       {/* ฟอร์มเพิ่มการจอง */}
       <div className="section mb-8">

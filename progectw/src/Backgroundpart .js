@@ -1,12 +1,12 @@
 // BackgroundSection.js
 import React from 'react';
 
-const BackgroundSection = ({ image }) => {
+const BackgroundSection = ({ image,height = '30vh', width = '100%' }) => {
     return (
         <section
             style={{
-                height: '50px',
-                width: '100%',
+                height:  height,
+                width:  width,
                 backgroundImage: `url(${process.env.PUBLIC_URL}/image/${image})`,
                 backgroundSize: 'cover'
             }}

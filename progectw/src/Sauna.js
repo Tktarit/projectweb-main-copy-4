@@ -105,12 +105,23 @@ const Sauna = () => {
       </div>
 
       {/* Colored Section */}
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: '#a56464',
-        }}
-      ></div>
+      <div style={{ 
+      display: 'flex', 
+      justifyContent: 'center', 
+      alignItems: 'center', 
+      height: '100vh' ,
+      flex: 1,
+    }}>
+      <img 
+        Src="/image/spa31.png"
+        alt="pic" 
+        style={{ 
+          width: '100%', 
+          height: '100%', 
+          borderRadius: '2px' 
+        }} 
+      />
+    </div>
     </div>
     <div
       style={{

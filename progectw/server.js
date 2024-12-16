@@ -394,9 +394,9 @@ app.post('/login', loginLimiter, (req, res) => {
 
         // สร้าง JWT
         const tokenPayload = {
-          id: user.id,
-          username: user.username,
-          role: user.role,
+            id: roleUser.id,
+            username: roleUser.username,
+            role: roleUser.role,
         };
   
         const token = jwt.sign(tokenPayload, jwtSecret, { expiresIn: '1h' });

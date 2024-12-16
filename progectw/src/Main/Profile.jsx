@@ -18,7 +18,7 @@ const Profile = () => {
       try {
         const response = await fetch('http://localhost:3000/profile', {
           headers: {
-            Authorization: `Bearer ${token}`, // ส่ง token ไปใน header
+            Authorization: `${token}`, // ส่ง token ไปใน header
           },
         });
 
